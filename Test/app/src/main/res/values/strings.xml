@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Test</string>
+    <string name="lblAge">Age</string>
+    <string name="lblOui">Oui</string>
+    <string name="lblNon">Non</string>
+    <string name="lblTester">Tester</string>
+    <string name="lblIsoler">Isolation des malades</string>
+    <string name="lblDepistage">Réalisation de dépistages</string>
+    <string name="lbl3h">Plus de 3 heures</string>
+    <string name="lbl2h">2-3 heures</string>
+    <string name="lbl1h">1 heure</string>
+    <string name="lbl30min">Moins de 30 minutes</string>
+    <string name="lblContact">Durée des contacts</string>
+    <string name="lblInterieurMauvais">En intérieur mal aéré</string>
+    <string name="lblInterieurBon">En intérieur mais bien ventillé</string>
+    <string name="lblExterieur">En extérieur</string>
+    <string name="lblLieux">Lieu de contact</string>
+    <string name="lblEveryMasque">Tout le monde porte un masque</string>
+    <string name="lblNotInfectMasque">Seule la personne non infectée porte un masque</string>
+    <string name="lblSeekMasque">Seul le porteur du virus porte un masque</string>
+    <string name="lblMasque">Port du masque</string>
+    <string name="lbl75ans">75 ans et plus</string>
+    <string name="lbl65ans">65-74 ans</string>
+    <string name="lbl45ans">45-64 ans</string>
+    <string name="lbl15ans">15-44 ans</string>
+    <string name="lblmoins15">Moins de 15 ans</string>
+</resources>

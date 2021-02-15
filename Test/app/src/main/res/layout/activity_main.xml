@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblAge" />
+
+            <RadioGroup
+                android:id="@+id/rgAge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbAgeLess15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblmoins15"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbAge15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl15ans" />
+
+                <RadioButton
+                    android:id="@+id/rbAge45"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl45ans" />
+
+                <RadioButton
+                    android:id="@+id/rbAge65"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl65ans" />
+
+                <RadioButton
+                    android:id="@+id/rbAge75"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl75ans" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtMasque"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblMasque" />
+
+            <RadioGroup
+                android:id="@+id/rgMasque"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbMasqueInfected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblSeekMasque"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbMasqueNotSeek"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblNotInfectMasque" />
+
+                <RadioButton
+                    android:id="@+id/rbMasqueBoth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblEveryMasque" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblLieux" />
+
+            <RadioGroup
+                android:id="@+id/rgPlace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbPlaceExterieur"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblExterieur"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbPlaceVentille"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblInterieurBon" />
+
+                <RadioButton
+                    android:id="@+id/rbPlaceBad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblInterieurMauvais" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblContact" />
+
+            <RadioGroup
+                android:id="@+id/rgContact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbContactLess30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl30min"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbContact1h"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl1h" />
+
+                <RadioButton
+                    android:id="@+id/rbContact2h"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl2h" />
+
+                <RadioButton
+                    android:id="@+id/rbContact3h"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl3h" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtDepistage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblDepistage" />
+
+            <RadioGroup
+                android:id="@+id/rgDepistage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbDepistageYes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblOui"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbDepistageNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblNon" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txtIsoler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblIsoler" />
+
+            <RadioGroup
+                android:id="@+id/rgIsoler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/rbIsolerYes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblOui"
+                    android:checked="true"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbIsolerNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblNon" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lblTester" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

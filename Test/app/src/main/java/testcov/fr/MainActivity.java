@@ -2,6 +2,7 @@ package testcov.fr;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,10 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    /*RadioGroup rgAge;
-    RadioButton rbAge;
-    TextView txtAge;*/
 
     private Button btnSubmit;
 
@@ -31,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private String sContact;
     private String sDepistage;
     private String sIsoler;
-
-    private Formulaire form;
 
     private View.OnClickListener btnCompareListener = new View.OnClickListener()
     {
@@ -61,7 +56,22 @@ public class MainActivity extends AppCompatActivity {
             sDepistage = (String) rbDepistage.getText();
             sIsoler = (String) rbIsoler.getText();
 
-            init(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler);
+            // Création de la nouvelle activité
+            Intent propagationActivity = new Intent(getApplicationContext(), Propagation.class);
+
+            // On passe les infos récupéré des boutons à la nouvelle activité.
+            propagationActivity.putExtra("Age", sAge);
+            propagationActivity.putExtra("Masque", sMasque);
+            propagationActivity.putExtra("Place", sPlace);
+            propagationActivity.putExtra("Contact", sContact);
+            propagationActivity.putExtra("Depistage", sDepistage);
+            propagationActivity.putExtra("Isoler", sIsoler);
+
+            // On démare la nouvelle activité
+            startActivity(propagationActivity);
+
+            // On met fin à cette activité sinon on a une erreur.
+            finish();
 
         }
     };
@@ -78,11 +88,8 @@ public class MainActivity extends AppCompatActivity {
         rgDepistage = (RadioGroup) findViewById(R.id.rgDepistage);
         rgIsoler = (RadioGroup) findViewById(R.id.rgIsoler);
 
-        btnSubmit.setOnClickListener(btnCompareListener);
-    }
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
-    private void init(String age, String masque, String place, String contact, String depistage, String isoler)
-    {
-        form = new Formulaire(age, masque, place, contact, depistage, isoler);
+        btnSubmit.setOnClickListener(btnCompareListener);
     }
 }

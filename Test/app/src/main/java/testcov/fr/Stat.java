@@ -1,3 +1,5 @@
+package testcov.fr;
+
 public class Stat{
 	private int nbPersonnes;
 	private int nbMort;

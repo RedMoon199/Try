@@ -24,4 +24,5 @@
     <string name="lbl45ans">45-64 ans</string>
     <string name="lbl15ans">15-44 ans</string>
     <string name="lblmoins15">Moins de 15 ans</string>
+    <string name="lblNoOneMasque">Personne ne porte de masque</string>
 </resources>

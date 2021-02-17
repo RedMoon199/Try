@@ -10,8 +10,9 @@ public class Formulaire {
     private int contact;
     private boolean test;
     private boolean isolation;
-    private int nbJour;
-    private int nbPersonnes;
+    private int R0 = 4;
+    private int nbJour = 15;
+    private int nbPersonnes = 500;
 
     public Formulaire(String age, String masque, String place, String contact, String depistage, String isoler)
     {
@@ -38,6 +39,10 @@ public class Formulaire {
 
         switch(masque)
         {
+            case "@string/lblNoOneMasque" :
+                this.masque = 0;
+                this.R0 += 1;
+                break;
             case "@string/lblSeekMasque" :
                 this.masque = 1;
                 break;
@@ -45,7 +50,8 @@ public class Formulaire {
                 this.masque = 2;
                 break;
             case "@string/lblEveryMasque" :
-                this.masque = 0;
+                this.masque = 3;
+                this.R0 -= 1;
                 break;
             default :
                 Log.i( "DEBUG", "Pour masque : valeur inconue" );
@@ -55,12 +61,14 @@ public class Formulaire {
         {
             case "@string/lblExterieur" :
                 this.environment = 1;
+                this.R0 -= 1;
                 break;
             case "@string/lblInterieurBon" :
                 this.environment = 2;
                 break;
             case "@string/lblInterieurMauvais" :
                 this.environment = 3;
+                this.R0 += 1;
                 break;
             default :
                 Log.i( "DEBUG", "Pour place : valeur inconue" );
@@ -68,8 +76,10 @@ public class Formulaire {
 
         switch(contact)
         {
+            // Est-ce que ça ne permettrait pas de définir le nombre de déplacements par j ?
             case "@string/lbl30min" :
                 this.contact = 1;
+                this.R0 -= 1;
                 break;
             case "@string/lbl1h" :
                 this.contact = 2;
@@ -107,6 +117,15 @@ public class Formulaire {
             default :
                 Log.i( "DEBUG", "Pour isoler : valeur inconue" );
         }
+        Log.i( "DEBUG", "Pour age : " + this.age);
+        Log.i( "DEBUG", "Pour port du masque : " + this.masque);
+        Log.i( "DEBUG", "Pour lieux de rencontre : " + this.environment);
+        Log.i( "DEBUG", "Pour temps de contact : " + this. contact);
+        Log.i( "DEBUG", "Pour réalisation des tests : " + this.test);
+        Log.i( "DEBUG", "Pour confinement des personnes malades : " + this.isolation);
+        Log.i( "DEBUG", "Pour R0 : " + this.R0);
+        Log.i( "DEBUG", "Pour nbJour : " + this.nbJour);
+        Log.i( "DEBUG", "Pour nbPersonnes : " + this.nbPersonnes);
     }
 
     public int getAge()

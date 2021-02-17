@@ -1,16 +1,21 @@
+package testcov.fr;
+
 //import de la classe Color
-import java.awt.Color;
+import android.graphics.Color;
+
+import androidx.annotation.ColorInt;
 
 public class Personne {
 	private boolean contaminer;
-	private Color infected;
+	@ColorInt
+	private int color;
 	private int nbJour;
 
 	private final int DEFAULT_NBJOUR = 0;
 
-	public Personne(Boolean contaminer, Color infected){
+	public Personne(Boolean contaminer, int color){
 		this.contaminer = contaminer;
-		this.infected = infected;
+		this.color = color;
 		this.nbJour = DEFAULT_NBJOUR;
 	}
 
@@ -21,12 +26,12 @@ public class Personne {
 		this.contaminer = contaminer;
 	}
 
-	public Color getInfected(){
-		return this.infected;
+	public int getColor(){
+		return this.color;
 	}
 
-	public void setInfected(Color color){
-		this.infected = color;
+	public void setColor(int color){
+		this.color = color;
 	}
 
 	public int getNbJour(){
@@ -39,7 +44,7 @@ public class Personne {
 	} 
 	public void beInfected(){
 		setContaminer(true);
-		setInfected(Color.RED); //a voir par rapport a la couleur de l'infection 
+		setColor(Color.RED); //a voir par rapport a la couleur de l'infection
 	}
 
 	

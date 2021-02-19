@@ -1,51 +1,83 @@
 package testcov.fr;
 
-//import de la classe Color
-import android.graphics.Color;
-
-import androidx.annotation.ColorInt;
+import java.util.Random;
 
 public class Personne {
-	private boolean contaminer;
-	@ColorInt
-	private int color;
-	private int nbJour;
 
-	private final int DEFAULT_NBJOUR = 0;
+    private boolean seek;
+    private boolean isDead;
+    private int seekAdvancement;
+    // Risque de mort
+    private int dieRate;
+    //private boolean hasBeenSeek;
+    private Random rdm = new Random();
 
-	public Personne(Boolean contaminer, int color){
-		this.contaminer = contaminer;
-		this.color = color;
-		this.nbJour = DEFAULT_NBJOUR;
-	}
+    private static final boolean DEFAULT_DEATH = false;
+    private static final int DEFAULT_SEEK_ADVANCEMENT = 0;
 
-	public boolean getContaminer(){
-		return this.contaminer;
-	}
-	public void setContaminer(Boolean contaminer){
-		this.contaminer = contaminer;
-	}
+    // Nombre de jour au bout duquel un malade n'est plus malade.
+    private static final int DEFAULT_STOP_SEEK = 15;
 
-	public int getColor(){
-		return this.color;
-	}
+    public Personne( boolean seek, int dieRate )
+    {
+        this.seek = seek;
+        this.isDead = this.DEFAULT_DEATH;
+        this.seekAdvancement = this.DEFAULT_SEEK_ADVANCEMENT;
+        this.dieRate = dieRate;
+    }
 
-	public void setColor(int color){
-		this.color = color;
-	}
+    //constructeur par copie (est-ce qu'on en a besoin ?)
+   /* public Personne(Personne p)
+    {
+        this.seek = p.seek;
+        this.isDead = p.isDead;
+        this.seekAdvancement = p.seekAdvancement;
+        this.dieRate = p.dieRate;
+    }*/
 
-	public int getNbJour(){
-		return this.nbJour;
-	}
+    // Met à jour la maladie de chacun
+    public void updateSeek()
+    {
+        if(this.getSeek())
+        {
+            if(getSeekAdvancement() == this.DEFAULT_STOP_SEEK)
+            {
+                this.setSeek(false);
+                this.seekAdvancement = 0;
+            }
+            else
+            {
+                int mortality = rdm.nextInt(101 );
+                if(mortality < this.dieRate)
+                {
+                    this.setSeek(false);
+                    this.isDead = true;
+                }
+                else
+                {
+                    this.seekAdvancement += 1;
+                }
+            }
+        }
+    }
 
-	public void setNbJour(int x)
-	{
-		this.nbJour = x;
-	} 
-	public void beInfected(){
-		setContaminer(true);
-		setColor(Color.RED); //a voir par rapport a la couleur de l'infection
-	}
+    public boolean getSeek()
+    {
+        return this.seek;
+    }
 
-	
+    public int getSeekAdvancement()
+    {
+        return this.seekAdvancement;
+    }
+
+    public boolean getIsDead()
+    {
+        return this.isDead;
+    }
+
+    public void setSeek( boolean seek )
+    {
+        this.seek = seek;
+    }
 }

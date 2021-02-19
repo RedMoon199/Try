@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 public class Propagation extends AppCompatActivity {
 
-    private Formulaire form;
+    private Environnement env;
 
     private String sAge = "";
     private String sMasque = "";
@@ -53,7 +53,7 @@ public class Propagation extends AppCompatActivity {
             // Si on a bien toutes les infos, on créé le formulaire.
             if(sAge != "" && sMasque != "" && sPlace != "" && sContact != "" && sDepistage != "" && sIsoler != "")
             {
-                form = new Formulaire(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler);
+                env = new Environnement(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler);
             }
         }
 

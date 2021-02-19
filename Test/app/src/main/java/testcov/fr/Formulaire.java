@@ -77,18 +77,19 @@ public class Formulaire {
         switch(contact)
         {
             // Est-ce que ça ne permettrait pas de définir le nombre de déplacements par j ?
+            // Pour l'instant je suis parti comme ça
             case "@string/lbl30min" :
-                this.contact = 1;
+                this.contact = 10;
                 this.R0 -= 1;
                 break;
             case "@string/lbl1h" :
-                this.contact = 2;
+                this.contact = 10;
                 break;
             case "@string/lbl2h" :
-                this.contact = 4;
+                this.contact = 5;
                 break;
             case "@string/lbl3h" :
-                this.contact = 6;
+                this.contact = 3;
                 break;
             default :
                 Log.i( "DEBUG", "Pour contact : valeur inconue" );
@@ -157,6 +158,8 @@ public class Formulaire {
     {
         return this.isolation;
     }
+
+    public int getR0() { return this.R0; }
 
     public int getNbJour()
     {

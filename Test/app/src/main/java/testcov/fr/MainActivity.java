@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup rgContact;
     private RadioGroup rgDepistage;
     private RadioGroup rgIsoler;
+    private RadioGroup rgNbJour;
 
     private String sAge;
     private String sMasque;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private String sContact;
     private String sDepistage;
     private String sIsoler;
+    private String sNbJour;
 
     private View.OnClickListener btnCompareListener = new View.OnClickListener()
     {
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             int idBtnContact = rgContact.getCheckedRadioButtonId();
             int idBtnDepistage = rgDepistage.getCheckedRadioButtonId();
             int idBtnIsoler = rgIsoler.getCheckedRadioButtonId();
+            int idBtnNbJour = rgNbJour.getCheckedRadioButtonId();
 
             RadioButton rbAge = findViewById(idBtnAge);
             RadioButton rbMasque = findViewById(idBtnMasque);
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             RadioButton rbContact = findViewById(idBtnContact);
             RadioButton rbDepistage = findViewById(idBtnDepistage);
             RadioButton rbIsoler = findViewById(idBtnIsoler);
+            RadioButton rbNbJour = findViewById(idBtnNbJour);
 
             sAge = (String) rbAge.getText();
             sMasque = (String) rbMasque.getText();
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             sContact = (String) rbContact.getText();
             sDepistage = (String) rbDepistage.getText();
             sIsoler = (String) rbIsoler.getText();
+            sNbJour = (String) rbNbJour.getText();
 
             // Création de la nouvelle activité
             Intent propagationActivity = new Intent(getApplicationContext(), Propagation.class);
@@ -66,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             propagationActivity.putExtra("Contact", sContact);
             propagationActivity.putExtra("Depistage", sDepistage);
             propagationActivity.putExtra("Isoler", sIsoler);
+            propagationActivity.putExtra("NbJour", sNbJour);
 
             // On démare la nouvelle activité
             startActivity(propagationActivity);
@@ -87,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         rgContact = (RadioGroup) findViewById(R.id.rgContact);
         rgDepistage = (RadioGroup) findViewById(R.id.rgDepistage);
         rgIsoler = (RadioGroup) findViewById(R.id.rgIsoler);
+        rgNbJour = (RadioGroup) findViewById(R.id.rgNbJour);
 
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
 

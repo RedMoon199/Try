@@ -219,6 +219,36 @@
                     android:text="@string/lblNon" />
             </RadioGroup>
 
+            <TextView
+                android:id="@+id/txtNbJour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lblNbJour" />
+
+            <RadioGroup
+                android:id="@+id/rgNbJour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <RadioButton
+                    android:id="@+id/rbNbJour1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl15j" />
+
+                <RadioButton
+                    android:id="@+id/rbNbJour2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl1month" />
+
+                <RadioButton
+                    android:id="@+id/rbNbJour3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl2month" />
+            </RadioGroup>
+
             <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="wrap_content"

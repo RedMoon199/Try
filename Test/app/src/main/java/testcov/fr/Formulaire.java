@@ -11,10 +11,10 @@ public class Formulaire {
     private boolean test;
     private boolean isolation;
     private int R0 = 4;
-    private int nbJour = 15;
+    private int nbJour;
     private int nbPersonnes = 500;
 
-    public Formulaire(String age, String masque, String place, String contact, String depistage, String isoler)
+    public Formulaire(String age, String masque, String place, String contact, String depistage, String isoler, String jour)
     {
         switch(age)
         {
@@ -117,6 +117,21 @@ public class Formulaire {
                 break;
             default :
                 Log.i( "DEBUG", "Pour isoler : valeur inconue" );
+        }
+
+        switch(jour)
+        {
+            case "@string/lbl15jour" :
+                this.nbJour = 15;
+                break;
+            case "@string/lbl1month" :
+                this.nbJour = 31;
+                break;
+            case "@string/lbl2month" :
+                this.nbJour = 62;
+                break;
+            default :
+                Log.i( "DEBUG", "Pour place : valeur inconue" );
         }
         Log.i( "DEBUG", "Pour age : " + this.age);
         Log.i( "DEBUG", "Pour port du masque : " + this.masque);

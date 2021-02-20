@@ -19,9 +19,9 @@ public class Environnement {
     //var possiblement temporaire
     private int nbPersone;
 
-    public Environnement(String sAge, String sMasque, String sPlace, String sContact, String sDepistage, String sIsoler)
+    public Environnement(String sAge, String sMasque, String sPlace, String sContact, String sDepistage, String sIsoler, String sNbJour)
     {
-        this.form = new Formulaire(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler);
+        this.form = new Formulaire(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler, sNbJour);
         this.tab =  new Personne[this.TEST_NB_LIGNE][this.TEST_NB_COLONNE];
         this.cpy = new Personne[this.TEST_NB_LIGNE][this.TEST_NB_COLONNE];
 
@@ -240,6 +240,54 @@ public class Environnement {
 
                 this.tab[x][y].resetMeet();
                 this.tab[x][y].updateSeek();
+            }
+        }
+    }
+
+    private Color getImage(int i, int j)
+    {
+        if(this.tab[i][j] == null)
+        {
+            return Color.WHITE;
+        }
+        else
+            return this.tab[i][j].getImage();
+    }
+
+    private void oneDay()
+    {
+        int nbDeplacement = this.form.getContact();
+        for(int x = 0; x < nbDeplacement; x++)
+        {
+            for(int i = 0; i < this.TEST_NB_LIGNE; i++)
+            {
+                for(int j = 0; j < this.TEST_NB_COLONNE; j++)
+                {
+                    deplacement(i, j);
+                }
+            }
+            for(int i = 0; i < this.TEST_NB_LIGNE; i++)
+            {
+                for(int j = 0; j < this.TEST_NB_COLONNE; j++)
+                {
+                    updateListMeet(i, j);
+                }
+            }
+
+            if(x != (nbDeplacement - 1))
+            {
+                majTab();
+            }
+            else
+            {
+                for(int i = 0; i < this.TEST_NB_LIGNE; i++)
+                {
+                    for(int j = 0; j < this.TEST_NB_COLONNE; j++)
+                    {
+                        endTurnInfectPeople(i, j);
+                    }
+                }
+                majTab();
             }
         }
     }

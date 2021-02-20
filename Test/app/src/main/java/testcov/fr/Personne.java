@@ -133,6 +133,25 @@ public class Personne {
         return this.rencontre.get(realIndice);
     }
 
+    public Color getImage()
+    {
+        if(this.getIsDead())
+        {
+            return Color.BLACK;
+        }
+        else
+        {
+            if(this.getSeek())
+            {
+                return Color.RED;
+            }
+            else
+            {
+                return Color.GREEN;
+            }
+        }
+    }
+
 
     public void setSeek( boolean seek )
     {

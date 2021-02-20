@@ -15,6 +15,7 @@ public class Propagation extends AppCompatActivity {
     private String sContact = "";
     private String sDepistage = "";
     private String sIsoler = "";
+    private String sNbJ = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,15 @@ public class Propagation extends AppCompatActivity {
             {
                 sIsoler = intent.getStringExtra("Isoler");
             }
+            if(intent.hasExtra("nbJour"))
+            {
+                sNbJ = intent.getStringExtra("NbJour");
+            }
 
             // Si on a bien toutes les infos, on créé le formulaire.
-            if(sAge != "" && sMasque != "" && sPlace != "" && sContact != "" && sDepistage != "" && sIsoler != "")
+            if(sAge != "" && sMasque != "" && sPlace != "" && sContact != "" && sDepistage != "" && sIsoler != "" && sNbJ != null)
             {
-                env = new Environnement(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler);
+                env = new Environnement(sAge, sMasque, sPlace, sContact, sDepistage, sIsoler, sNbJ);
             }
         }
 

@@ -18,19 +18,19 @@ public class Formulaire {
     {
         switch(age)
         {
-            case "@string/lblmoins15" :
+            case "Moins de 15 ans" :
                 this.age = -15;
                 break;
-            case "@string/lbl15ans" :
+            case "15-44 ans" :
                 this.age = 15;
                 break;
-            case "@string/lbl45ans" :
+            case "45-64 ans" :
                 this.age = 45;
                 break;
-            case "@string/lbl65ans" :
+            case "65-74 ans" :
                 this.age = 65;
                 break;
-            case "@string/lbl75ans" :
+            case "75 ans et plus" :
                 this.age = 75;
                 break;
             default :
@@ -39,17 +39,17 @@ public class Formulaire {
 
         switch(masque)
         {
-            case "@string/lblNoOneMasque" :
+            case "Personne ne porte de masque" :
                 this.masque = 0;
                 this.R0 += 1;
                 break;
-            case "@string/lblSeekMasque" :
+            case "Seul le porteur du virus porte un masque" :
                 this.masque = 1;
                 break;
-            case "@string/lblNotInfectMasque" :
+            case "Seule la personne non infectée porte un masque" :
                 this.masque = 2;
                 break;
-            case "@string/lblEveryMasque" :
+            case "Tout le monde porte un masque" :
                 this.masque = 3;
                 this.R0 -= 1;
                 break;
@@ -59,14 +59,14 @@ public class Formulaire {
 
         switch(place)
         {
-            case "@string/lblExterieur" :
+            case "En extérieur" :
                 this.environment = 1;
                 this.R0 -= 1;
                 break;
-            case "@string/lblInterieurBon" :
+            case "En intérieur mais bien ventillé" :
                 this.environment = 2;
                 break;
-            case "@string/lblInterieurMauvais" :
+            case "En intérieur mal aéré" :
                 this.environment = 3;
                 this.R0 += 1;
                 break;
@@ -78,17 +78,17 @@ public class Formulaire {
         {
             // Est-ce que ça ne permettrait pas de définir le nombre de déplacements par j ?
             // Pour l'instant je suis parti comme ça
-            case "@string/lbl30min" :
+            case "Moins de 30 minutes" :
                 this.contact = 10;
                 this.R0 -= 1;
                 break;
-            case "@string/lbl1h" :
+            case "1 heure" :
                 this.contact = 10;
                 break;
-            case "@string/lbl2h" :
+            case "2-3 heures" :
                 this.contact = 5;
                 break;
-            case "@string/lbl3h" :
+            case "Plus de 3 heures" :
                 this.contact = 3;
                 break;
             default :
@@ -97,10 +97,10 @@ public class Formulaire {
 
         switch(depistage)
         {
-            case "@string/lblOui" :
+            case "Oui" :
                 this.test = true;
                 break;
-            case "@string/lblNon" :
+            case "Non" :
                 this.test = false;
                 break;
             default :
@@ -109,10 +109,10 @@ public class Formulaire {
 
         switch(isoler)
         {
-            case "@string/lblOui" :
+            case "Oui" :
                 this.isolation = true;
                 break;
-            case "@string/lblNon" :
+            case "Non" :
                 this.isolation = false;
                 break;
             default :
@@ -121,13 +121,13 @@ public class Formulaire {
 
         switch(jour)
         {
-            case "@string/lbl15jour" :
+            case "15 jour" :
                 this.nbJour = 15;
                 break;
-            case "@string/lbl1month" :
+            case "1 mois" :
                 this.nbJour = 31;
                 break;
-            case "@string/lbl2month" :
+            case "2 mois" :
                 this.nbJour = 62;
                 break;
             default :

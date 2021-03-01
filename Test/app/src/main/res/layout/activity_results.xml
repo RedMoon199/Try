@@ -27,35 +27,33 @@
         tools:layout_editor_absoluteY="665dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nbPersonnes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lblSur"
-
+        android:text="nbPersones"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="95dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/nbMortRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nbPersonnes"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="95dp" />
+        android:text="nbMort"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="225dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nbContamine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lblPersonne"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="95dp" />
-
+        android:text="nbContamine"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="185dp" />
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/nbSain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Ilyaeu"
+        android:text="nbSain"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="140dp" />
 

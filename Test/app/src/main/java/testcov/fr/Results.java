@@ -18,7 +18,7 @@ public class Results extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propagation/*activité_correpsondant au développement du virus*/);
-        il faut modifié l'activbité qui va envoyé les infos '
+
 
         Intent intent = getIntent();
         if(intent != null)

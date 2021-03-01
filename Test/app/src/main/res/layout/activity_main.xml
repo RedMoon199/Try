@@ -53,6 +53,12 @@
                     android:text="@string/lbl65ans" />
 
                 <RadioButton
+                    android:id="@+id/rbPlaceVentille"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lblInterieurBon" />
+
+                <RadioButton
                     android:id="@+id/rbAge75"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -115,12 +121,6 @@
                     android:text="@string/lblExterieur"
                     android:checked="true"
                     />
-
-                <RadioButton
-                    android:id="@+id/rbPlaceVentille"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lblInterieurBon" />
 
                 <RadioButton
                     android:id="@+id/rbPlaceBad"

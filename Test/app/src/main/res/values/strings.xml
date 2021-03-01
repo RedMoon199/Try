@@ -29,4 +29,20 @@
     <string name="lbl15j">15 jour</string>
     <string name="lbl1month">1 mois</string>
     <string name="lbl2month">2 mois</string>
+    <string name="lblRetry">Retry</string>
+    <!--dialogue pour explication des évènement-->
+    <string name="whiteCase">Il n\'y as personne sur cette case</string>
+    <string name="blackCase">Il y as une personne décédée sur cette case</string>
+    <string name="greenCase">Il y as une personne saine sur cette case</string>
+    <string name="redCase">Il y as une personne infecté sur cette case</string>
+    <string name="nextDay">Un Jour est passé</string> <!--à mettre a la fin d'une activité d'un jour -->
+    <string name="endSimulation">Fin de la simulation</string><!-- a mettre a la fin de la simulation-->
+    <!-- dialogue fin de simulation-->
+    <string name="lblResult">Résultats</string>
+    <string name="Ilyaeu">Il y a eu :</string>
+    <string name="lblMort">Mort</string>
+    <string name="lblInfecte">Infecté(s)</string>
+    <string name="lblPersonne"> personnes :</string>
+    <string name="lblSur">Sur</string>
+
 </resources>

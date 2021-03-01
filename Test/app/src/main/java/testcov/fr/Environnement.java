@@ -16,6 +16,7 @@ public class Environnement {
     private static final int TEST_NB_COLONNE = 10;
     private static final int TEST_NB_LIGNE = 20;
     private static final int varTMPdieRate = 10;
+    private static int quelJour = 0;
     //var possiblement temporaire
     private int nbPersone;
 
@@ -254,7 +255,7 @@ public class Environnement {
             return this.tab[i][j].getImage();
     }
 
-    private void oneDay()
+    public void oneDay()
     {
         int nbDeplacement = this.form.getContact();
         for(int x = 0; x < nbDeplacement; x++)
@@ -290,6 +291,55 @@ public class Environnement {
                 majTab();
             }
         }
+        this.quelJour += 1;
+    }
+
+    public int getNbCase()
+    {
+        return this.TEST_NB_COLONNE * this.TEST_NB_LIGNE;
+    }
+
+    public Integer[] getTab()
+    {
+        int length = this.getNbCase();
+        Integer tab[] = new Integer[length];
+        int location = 0;
+        for(int i = 0; i < this.TEST_NB_LIGNE; i++)
+        {
+            for(int j = 0; j < this.TEST_NB_COLONNE; j++)
+            {
+                Color c = this.getImage(i, j);
+                if(c == Color.WHITE)
+                {
+                    tab[location] = R.drawable.white;
+                }
+                if(c == Color.RED)
+                {
+                    tab[location] = R.drawable.red;
+                }
+                if(c == Color.GREEN)
+                {
+                    tab[location] = R.drawable.green;
+                }
+                if(c == Color.BLACK)
+                {
+                    tab[location] = R.drawable.black;
+                }
+                location += 1;
+            }
+        }
+        return tab;
+    }
+
+    // Renvoie à quel jour de l'épidémie on est
+    public int getQuelJour()
+    {
+        return this.getQuelJour();
+    }
+
+    public int getFinEpidemie()
+    {
+        return this.form.getNbJour();
     }
 
 }

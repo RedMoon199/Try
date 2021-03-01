@@ -234,7 +234,8 @@
                     android:id="@+id/rbNbJour1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/lbl15j" />
+                    android:text="@string/lbl15j"
+                    android:checked="true" />
 
                 <RadioButton
                     android:id="@+id/rbNbJour2"

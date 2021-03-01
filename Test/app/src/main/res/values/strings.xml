@@ -29,4 +29,5 @@
     <string name="lbl15j">15 jour</string>
     <string name="lbl1month">1 mois</string>
     <string name="lbl2month">2 mois</string>
+    <string name="txtNexDay">Jour suivant</string>
 </resources>

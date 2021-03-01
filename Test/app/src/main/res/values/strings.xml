@@ -30,4 +30,7 @@
     <string name="lbl1month">1 mois</string>
     <string name="lbl2month">2 mois</string>
     <string name="txtNexDay">Jour suivant</string>
+    <string name="lblResult">Résultats</string>
+    <string name="buttonRetry">Retry</string>
+    <string name="explResult">Ces résultats sont du au fais que la population est suivi un certain comportement qui est :</string>
 </resources>

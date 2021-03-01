@@ -22,41 +22,89 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lblRetry"
-        tools:layout_editor_absoluteX="299dp"
+        android:text="@string/buttonRetry"
+        tools:layout_editor_absoluteX="295dp"
         tools:layout_editor_absoluteY="665dp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nbPersonnes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lblSur"
-
+        android:text="nbPersones"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="95dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/nbMortRes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nbPersonnes"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="95dp" />
+        android:text="nbMort"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="230dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/nbContamine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lblPersonne"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="95dp" />
-
+        android:text="nbContamine"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="185dp" />
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/nbSain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Ilyaeu"
+        android:text="nbSain"
         tools:layout_editor_absoluteX="19dp"
         tools:layout_editor_absoluteY="140dp" />
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/explResult"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="275dp"
+        />
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="age"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="320dp" />
+    <TextView
+        android:id="@+id/masque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="masque"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="365dp" />
+    <TextView
+        android:id="@+id/environment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="environment"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="410dp" />
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="contact"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="455dp" />
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="500dp" />
+    <TextView
+        android:id="@+id/isolation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="isolation"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="545dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

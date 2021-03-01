@@ -17,6 +17,7 @@ import android.widget.RadioButton;
 public class Propagation extends AppCompatActivity {
 
     GridView gv;
+    // A voir TableLayout
 
     Integer[] image;
 

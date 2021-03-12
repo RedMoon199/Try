@@ -12,7 +12,7 @@ public class Formulaire {
     private boolean isolation;
     private int R0 = 4;
     private int nbJour;
-    private int nbPersonnes = 500;
+    private int nbPersonnes = 20;
 
     public Formulaire(String age, String masque, String place, String contact, String depistage, String isoler, String jour)
     {

@@ -23,7 +23,7 @@ public class Results extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_propagation);
+        setContentView(R.layout.activity_environnement);
 
         Intent intent = getIntent();
         if(intent != null)
@@ -80,12 +80,6 @@ public class Results extends AppCompatActivity {
                 TextView textNbSain = (TextView) findViewById(R.id.isolation);
                 textNbSain.setText("- Il y a eu un confinement : " + boolStr(this.isolation));
             }
-
-
-
-
-
-
         }
     }
 

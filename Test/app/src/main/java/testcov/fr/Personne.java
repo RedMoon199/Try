@@ -6,15 +6,16 @@ import java.util.Random;
 
 public class Personne {
 
-    private boolean seek;
-    private boolean isDead;
-    private int seekAdvancement;
+    private int image; //id de l'image le R.drawable
+    private boolean seek; //si malade
+    private boolean isDead; //si mort
+    private int seekAdvancement; //nb jours de la maladie
     // Risque de mort
-    private int dieRate;
+    private int dieRate; // prob de mourrir
     //private boolean hasBeenSeek;
-    private Random rdm = new Random();
-    private int id;
-    private List<Integer> rencontre;
+    private Random rdm = new Random(); //nombre random
+    private int id; // l'id de la personne
+    private List<Integer> rencontre; //liste de personne que la personne rencontre
 
     private static final boolean DEFAULT_DEATH = false;
     private static final int DEFAULT_SEEK_ADVANCEMENT = 0;
@@ -22,8 +23,9 @@ public class Personne {
     // Nombre de jour au bout duquel un malade n'est plus malade.
     private static final int DEFAULT_STOP_SEEK = 15;
 
-    public Personne( boolean seek, int dieRate, int id )
+    public Personne(int img, boolean seek, int dieRate, int id )
     {
+        this.image = img;
         this.seek = seek;
         this.isDead = this.DEFAULT_DEATH;
         this.seekAdvancement = this.DEFAULT_SEEK_ADVANCEMENT;
@@ -31,21 +33,6 @@ public class Personne {
         this.id = id;
         rencontre = new ArrayList<Integer>();
     }
-
-    //constructeur par copie (est-ce qu'on en a besoin ?)
-   /* public Personne(Personne p)
-    {
-        this.seek = p.seek;
-        this.isDead = p.isDead;
-        this.seekAdvancement = p.seekAdvancement;
-        this.dieRate = p.dieRate;
-        this.id = p.id;
-        int size = p.rencontre.size();
-        for(int i = 0; i < size; i++)
-        {
-            this.rencontre.add(p.rencontre.get(i); // Est-ce que les indices commencent bien à 0 ?
-        }
-    }*/
 
     // Met à jour la maladie de chacun
     public void updateSeek()
@@ -133,28 +120,26 @@ public class Personne {
         return this.rencontre.get(realIndice);
     }
 
-    public Color getImage()
+    public int getImgId()
     {
-        if(this.getIsDead())
-        {
-            return Color.BLACK;
-        }
-        else
-        {
-            if(this.getSeek())
-            {
-                return Color.RED;
-            }
-            else
-            {
-                return Color.GREEN;
-            }
-        }
+        return this.image;
     }
 
+    public void setImgId(int image)
+    {
+        this.image = image;
+    }
 
     public void setSeek( boolean seek )
     {
         this.seek = seek;
+    }
+
+    public boolean isPersonne()
+    {
+        if (this.image == R.drawable.white)
+            return false;
+        else
+            return true;
     }
 }

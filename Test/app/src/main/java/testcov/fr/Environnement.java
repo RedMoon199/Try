@@ -8,6 +8,7 @@ package testcov.fr;
 import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 
@@ -21,12 +22,12 @@ import java.util.Random;
 public class Environnement extends AppCompatActivity {
 
     Button nextDay; //Boutton pour passer le jour
+    int jEpidemie, dureeSimulation;
     GridView myGridView; //Notre gridView
     PersonneGVAdapter adapter; //notre adapter
     ArrayList<Personne> listPersonne;
-
-    PersonneGVAdapter adapterCpy; // la copy
-    ArrayList<Personne> listPersonneCpy; //la copy
+    private Personne[][] tab;
+    private Personne[][] cpy;
 
     /*A détailler */
     private String sAge = "";
@@ -95,35 +96,31 @@ public class Environnement extends AppCompatActivity {
 
         myGridView = findViewById(R.id.gv);
         this.nextDay = (Button) findViewById(R.id.btnNextDay);
+        this.tab =  new Personne[this.TEST_NB_LIGNE][this.TEST_NB_COLONNE];
+        this.cpy = new Personne[this.TEST_NB_LIGNE][this.TEST_NB_COLONNE];
+
 
         /*Tout d'abord on lance la création de X personne dans la fonction adéquat */
         ArrayList<Personne> listPersonne = new ArrayList<Personne>();
+        ArrayList<Personne> lisPersonneCpy = new ArrayList<Personne>();
         listPersonne = createEnv();
         PersonneGVAdapter adapter = new PersonneGVAdapter(this, listPersonne);
         myGridView.setAdapter(adapter);
 
-        /*Personne cpyPersonne = adapter.getItem(1);
-        adapter.remove(adapter.getItem(1));
-        cpyPersonne.setImgId(R.drawable.black);
-        adapter.insert(cpyPersonne,1);
-        //adapter.notifyDataSetChanged();
-        //adapter.notifyDataSetChanged();
-        */deplacement(11);
-        /*this.nextDay.setOnClickListener(
-                event ->{
-                    //??Log.i( "DEBUG", "Bouton next day clique" );
-                    int jEpidemie =  this.getQuelJour();
-                    int dureeSimulation = this.getFinEpidemie();
-                    if(dureeSimulation > jEpidemie)
-                    {
-                        this.oneDay();
-                    }
-                    else
-                    {
-                        // renvoie vers explication.
-                    }
+        this.nextDay.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                jEpidemie = getQuelJour();
+                dureeSimulation = getFinEpidemie();
+                if (dureeSimulation > jEpidemie) {
+                    oneDay();
                 }
-        );*/
+                else {
+                    //startActivity(resultActivity);
+                }
+            }
+        });
     }
 
     //place les personnes blanches
@@ -139,6 +136,8 @@ public class Environnement extends AppCompatActivity {
         {
             for (int j = 0; j < this.TEST_NB_COLONNE; j++)
             {
+                this.tab[i][j] = new Personne(R.drawable.white,false, this.varTMPdieRate, i*10+j);
+                this.cpy[i][j] = new Personne(R.drawable.white,false, this.varTMPdieRate, i*10+j);
                 listPersonne.add(new Personne(R.drawable.white, false, this.varTMPdieRate, i*10+j));
             }
         }
@@ -148,44 +147,74 @@ public class Environnement extends AppCompatActivity {
         while(nbPersonne < 20)
         {
             rndPosition = rdm.nextInt((this.getNbCase() - 0) + 1) + 0;
-            //(int)(Math.random() * (float)(this.getNbCase()));
             if(listPersonne.get(rndPosition).isPersonne() == false)
             {
-                if(nbPersonne == 0 )
+                if(nbPersonne == 0 ){
                     listPersonne.get(rndPosition).setImgId(R.drawable.red); // le premier est contaminé
-                else
+                    listPersonne.get(rndPosition).setSeek(true);
+                    tab[rndPosition/10][rndPosition % 10].setSeek(true);
+                    tab[rndPosition/10][rndPosition % 10].setImgId(R.drawable.red);
+                    cpy[rndPosition/10][rndPosition % 10].setSeek(true);
+                    cpy[rndPosition/10][rndPosition % 10].setImgId(R.drawable.red);
+                }
+
+                else {
                     listPersonne.get(rndPosition).setImgId(R.drawable.green); // les autres sont
+                    tab[rndPosition/10][rndPosition % 10].setImgId(R.drawable.green);
+                    cpy[rndPosition/10][rndPosition % 10].setImgId(R.drawable.green);
+                }
                 nbPersonne++;
             }
         }
-        listPersonne.get(11).setImgId(R.drawable.green);
         return listPersonne;
     }
 
     // fct qui permet de déplacer une seule personne
-    private void deplacement(int pos)
+    private void deplacement(int i, int j)
     {
-        int dx,dy, go;
-        if(adapter.getItem(pos).isPersonne()) // Si la case est occupée par une personne
+        if(this.cpy[i][j] != null) // Si la case est occupée par une personne
         {
-            if(adapter.getItem(pos).getIsDead()) // Si la personne n'est pas morte
+            if(!this.cpy[i][j].getIsDead()) // Si la personne n'est pas morte
             {
-
                 // Détermination du prochain mouvement
-                /*do {
-                    dx = 1;//rdm.nextInt(1); //random entre 0 et 1
-                    dy = 1;//rdm.nextInt(1); //random entre 0 et 1
-                    go = getAvailableMove(dx, dy, pos);
-                }while(go == -1);*/
-                go = 1;
-                Personne cpyPersonne1 = adapter.getItem(pos);
-                Personne cpyPersonne2 = adapter.getItem((pos+go));
-                adapter.remove(adapter.getItem(pos));
-                adapter.insert(cpyPersonne2, pos);
-                adapter.notifyDataSetChanged();
-                adapter.remove(adapter.getItem((pos+go)));
-                adapter.insert(cpyPersonne1, (pos+go));
-                adapter.notifyDataSetChanged();
+                int dx = this.rdm.nextInt(2);
+                int dy = this.rdm.nextInt(2);
+                int x, y;
+                if((dx == 0) && (j > 0))
+                {
+                    x = -1;
+                }
+                else if(j < (this.TEST_NB_LIGNE - 1))
+                {
+                    x = 1;
+                }
+                else
+                {
+                    x = 0;
+                }
+
+                if((dy == 0) && (x > 0))
+                {
+                    y = -1;
+                }
+                else if(x < ((this.TEST_NB_COLONNE) - 1))
+                {
+                    y = 1;
+                }
+                else
+                {
+                    y = 0;
+                }
+
+                // Si la personne n'est pas obligée de rester sur la même case (ex : cas des coins)
+                if((x != 0) || (y != 0))
+                {
+                    if(this.tab[i + x][j + y].isPersonne() == false)
+                    {
+                        this.tab[i + x][j + y] =/* new Personne(*/this.cpy[i][j]/*)*/; // Est-ce qu'on a besoin d'un constructeur par copie ?
+                        this.tab[i][j].setImgId(R.drawable.white);
+                    }
+                }
                 //Sinon on bouge pas
 
             }
@@ -194,73 +223,13 @@ public class Environnement extends AppCompatActivity {
         //Sinon on bouge pas
     }
 
-
-
-    //retourne vrai si la personne peux bouger ou il veut
-    public int getAvailableMove(int dx, int dy, int pos)
-    {
-        int go = -1;
-        //premier cas dx = 0 et dy = 0 alors on monte
-        if((dx == 0) && (dy == 0))
-        {
-            if(pos -10 > 0)
-                go = pos -10;
-        }
-        //deuxieme cas dx = 0 et dy = 1 alors a droite
-        else if((dx == 0) && (dy == 1))
-        {
-            if(pos +1 > (this.TEST_NB_LIGNE*10 + TEST_NB_LIGNE))
-                go = pos +1;
-        }
-        //troisieme cas dx = 1 et dy = 0 alors a gauche
-        else if((dx == 1) && (dy == 0))
-        {
-            if(pos -1 > 0)
-                go = pos +1;
-        }
-        //troisieme cas dx = 1 et dy = 1 alors en bas
-        else
-        {
-            if(pos +10 > (this.TEST_NB_LIGNE*10 + TEST_NB_LIGNE))
-                go = pos +1;
-        }
-
-        //si une personne déja la
-        if (go != -1)
-            if(adapter.getItem((pos + go)).isPersonne() == true)
-                go = -1;
-        return go;
-    }
-
-    /*
-    //une copie de tab a essayer de copie array list et de la mettre dans l'adaptater
-    private void majTab()
-    {
-        for(int i = 0; i < this.TEST_NB_LIGNE; i++)
-        {
-            for(int j = 0; j < this.TEST_NB_COLONNE; j++)
-            {
-                if(this.tab[i][j] != null)
-                {
-                    this.cpy[i][j] = this.tab[i][j]; // Constructeur par copie?
-                }
-                else
-                {
-                    this.cpy[i][j] = null;
-                }
-            }
-        }
-    }*/
-
-
-
     // Renseigne la liste des personnes rencontrés par une personne malade.
     private void updateListMeet(int i, int j)
     {
-        if(adapter.getItem(i*10+j).isPersonne()) //si une personne
+        if(this.tab[i][j] != null)
         {
             // Si la personne est malade, on va chercher les personnes saines autour d'elle et les ajouter à sa liste de rencontre.
-            if(adapter.getItem(i*10+j).getSeek())
+            if(this.tab[i][j].getSeek())
             {
                 int x, toX, y, toY;
                 if(i > 0)
@@ -286,14 +255,13 @@ public class Environnement extends AppCompatActivity {
                     {
                         if((k != i) && (l != j))
                         {
-                            adapter.getItem((i*10)+j).haveMeet(adapter.getItem((k*10)+l)); //a voir si on prend l'id = int position dans la liste
+                            this.tab[i][j].haveMeet(this.tab[k][l]);
                         }
                     }
                 }
             }
         }
     }
-
 
     // Recherche une personne par son identifiant et l'infecte
     private void searchAndInfect(int id)
@@ -302,26 +270,25 @@ public class Environnement extends AppCompatActivity {
         {
             for(int j = 0; j < this.TEST_NB_COLONNE; j++)
             {
-                if(adapter.getItem(i*10+j).isPersonne()) //si c'est une personne
+                if(this.tab[i][j].isPersonne() == true)
                 {
-                    if(adapter.getPosition(adapter.getItem(i*10+j))== id) // a voir idem pour l'id
-                        adapter.getItem(i*10+j).setSeek(true);
+                    if(this.tab[i][j].getId() == id)
+                        this.tab[i][j].setSeek(true);
                 }
             }
         }
     }
 
-
     // La personne ciblée infecte les personnes de sa liste selon le R0 puis remet sa liste à 0
     // De plus elle met à jour sa maladie
     private void endTurnInfectPeople(int x, int y)
     {
-        if(adapter.getItem(x*10+y).isPersonne()) // si c'est une personne
+        if(this.tab[x][y] != null)
         {
-            if(adapter.getItem(x*10+y).getSeek() && (!adapter.getItem(x*10+y).getIsDead())) // si malade et non mort
+            if(this.tab[x][y].getSeek() && (!this.tab[x][y].getIsDead()))
             {
                 int R0 = this.form.getR0();
-                int size = adapter.getItem(x*10+y).getNbMeet();
+                int size = this.tab[x][y].getNbMeet();
                 int newInfection, idNewInfected;
                 if(R0 > size)
                     newInfection = size;
@@ -330,15 +297,30 @@ public class Environnement extends AppCompatActivity {
 
                 while(newInfection != 0)
                 {
-                    idNewInfected = adapter.getPosition(adapter.getItem(x * 10 + y)); //this.tab[x][y].getIdRencontre(newInfection)
+                    idNewInfected = this.tab[x][y].getIdRencontre(newInfection);
                     searchAndInfect(idNewInfected);
                     newInfection -= 1;
                 }
 
-                adapter.getItem(x*10+y).resetMeet();
-                adapter.getItem(x*10+y).updateSeek();
+                this.tab[x][y].resetMeet();
+                this.tab[x][y].updateSeek();
             }
         }
+    }
+
+    //une copie de tab a essayer de copie array list et de la mettre dans l'adaptater
+    private void majTab()
+    {
+        adapter.clear(); //supprime toute
+        for(int i = 0; i < this.TEST_NB_LIGNE; i++)
+        {
+            for(int j = 0; j < this.TEST_NB_COLONNE; j++)
+            {
+                adapter.insert(tab[i][j], i*10+j); //remet tous
+                this.cpy[i][j] = this.tab[i][j]; //remplace dans la cpy
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 
     //Fonction effectue les actions d'une journée
@@ -351,7 +333,7 @@ public class Environnement extends AppCompatActivity {
             {
                 for(int j = 0; j < this.TEST_NB_COLONNE; j++)
                 {
-                    //deplacement(i, j);
+                    deplacement(i, j);
                 }
             }
             for(int i = 0; i < this.TEST_NB_LIGNE; i++)
@@ -364,7 +346,7 @@ public class Environnement extends AppCompatActivity {
 
             if(x != (nbDeplacement - 1))
             {
-                //majTab();
+                majTab(); //on met a jour
             }
             else
             {
@@ -375,7 +357,7 @@ public class Environnement extends AppCompatActivity {
                         endTurnInfectPeople(i, j);
                     }
                 }
-                //majTab();
+                majTab();
             }
         }
         this.quelJour += 1;
@@ -384,13 +366,13 @@ public class Environnement extends AppCompatActivity {
     //nombre de personne
     public int getNbCase()
     {
-        return (this.TEST_NB_LIGNE * 20 + this.TEST_NB_COLONNE);
+        return ((this.TEST_NB_LIGNE-1) * 10 + this.TEST_NB_COLONNE - 1);
     }
 
     // Renvoie à quel jour de l'épidémie on est
     public int getQuelJour()
     {
-        return this.getQuelJour();
+        return this.quelJour;
     }
 
     //retourne la date de fin de l'épidémie

@@ -62,19 +62,19 @@ public class MainActivity extends AppCompatActivity {
             sNbJour = (String) rbNbJour.getText();
 
             // Création de la nouvelle activité
-            Intent propagationActivity = new Intent(getApplicationContext(), Propagation.class);
+            Intent environnementActivity = new Intent(getApplicationContext(), Environnement.class);
 
             // On passe les infos récupéré des boutons à la nouvelle activité.
-            propagationActivity.putExtra("Age", sAge);
-            propagationActivity.putExtra("Masque", sMasque);
-            propagationActivity.putExtra("Place", sPlace);
-            propagationActivity.putExtra("Contact", sContact);
-            propagationActivity.putExtra("Depistage", sDepistage);
-            propagationActivity.putExtra("Isoler", sIsoler);
-            propagationActivity.putExtra("NbJour", sNbJour);
+            environnementActivity.putExtra("Age", sAge);
+            environnementActivity.putExtra("Masque", sMasque);
+            environnementActivity.putExtra("Place", sPlace);
+            environnementActivity.putExtra("Contact", sContact);
+            environnementActivity.putExtra("Depistage", sDepistage);
+            environnementActivity.putExtra("Isoler", sIsoler);
+            environnementActivity.putExtra("NbJour", sNbJour);
 
             // On démare la nouvelle activité
-            startActivity(propagationActivity);
+            startActivity(environnementActivity);
 
             // On met fin à cette activité sinon on a une erreur.
             finish();
